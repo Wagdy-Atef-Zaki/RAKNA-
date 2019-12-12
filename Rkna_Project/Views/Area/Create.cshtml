@@ -1,0 +1,165 @@
+﻿ @model Rkna_Project.Models.Area_Table
+
+
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+<h2> New Garage</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+<div class="form-horizontal">
+
+    <hr />
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.Label("Governorate Name", htmlAttributes: new { @class = "control-label col-md-6" })
+        <div class="col-md-10">
+            <select class="form-control" id="Gov" name="Gov" required="required">
+                <option value="-1">Choose Governorate </option>
+
+                @{ foreach (var item in ViewBag.Governorate_Table as IList<Rkna_Project.Models.Governorate_Table>)
+                    {
+
+                        <option value="@item.Gov_ID">@item.Gov_Name</option>
+                    }
+                }
+            </select>
+            <br />
+            @Html.ValidationMessage("Governate is Required", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.Label("City", htmlAttributes: new { @class = "control-label col-md-6" })
+        <div class="col-md-10">
+            <select class="form-control" id="States_ID" name="States_ID" required="required"></select>
+            <br />
+            @Html.ValidationMessageFor(model => model.States_ID, "", new { @class = "text-danger" })
+        </div>
+    </div>
+  
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Area_Name, "Garage", htmlAttributes: new { @class = "control-label col-md-6" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Area_Name, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+            <br />
+            @Html.ValidationMessageFor(model => model.Area_Name, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Area_Desc, "Area Description", htmlAttributes: new { @class = "control-label col-md-6" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Area_Desc, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+            <br />
+            @Html.ValidationMessageFor(model => model.Area_Desc, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Area_Manger, "Area_Manger", htmlAttributes: new { @class = "control-label col-md-6" })
+        <div class="col-md-10">
+            @Html.DropDownList("Area_Manger", null, htmlAttributes: new { @class = "form-control", required = "required" })
+            <br />
+            @Html.ValidationMessageFor(model => model.Area_Manger, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Area_Hour_Rate, "Area Hour Rate", htmlAttributes: new { @class = "control-label col-md-6" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Area_Hour_Rate, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+            <br />
+            @Html.ValidationMessageFor(model => model.Area_Hour_Rate, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Area_Start_Time, "Area Start Time ", htmlAttributes: new { @class = "control-label col-md-6" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Area_Start_Time, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+            <br />
+            @Html.ValidationMessageFor(model => model.Area_Start_Time, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+
+        @Html.LabelFor(model => model.Area_End_Time, "Area End Time", htmlAttributes: new { @class = "control-label col-md-6" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Area_End_Time, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+            <br />
+            @Html.ValidationMessageFor(model => model.Area_End_Time, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        <div id="map_canvas" style="height: 400px;"></div>
+    </div>
+    <div class="form-group">
+        @Html.Label("Address", htmlAttributes: new { id = "address", @class = "control-label col-md-6" })
+        <div class="col-md-10">
+            @Html.Editor(" ", new { htmlAttributes = new { id = "address", @class = "form-control" } })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Area_X_Point, "Longitude", htmlAttributes: new { @class = "control-label col-md-6" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Area_X_Point, new { htmlAttributes = new { id = "Longitude", @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Area_X_Point, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Area_Y_Point, "Latitude", htmlAttributes: new { @class = "control-label col-md-6" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Area_Y_Point, new { htmlAttributes = new { id = "Latitude", @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Area_Y_Point, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Save" class="btn btn-outline-info btn-rounded" />
+            @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-primary btn-rounded btn-large" })
+        </div>
+    </div>
+</div>
+
+}
+
+
+@section Scripts {
+
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#Gov").change(function () {
+                $.ajax({
+                    type: "GET",
+                    url: "/Area/getCity",
+                    data: "{}",
+                    success: function (data) {
+                        var s = '<option value="-1">Please Select</option>';
+                        for (var i = 0; i < data.length; i++) {
+                            if (data[i].Gov_ID == $("#Gov").val()) {
+                                s += '<option value="' + data[i].States_ID + '">' + data[i].States_Name + '</option>';
+                            }
+                        }
+                        $("#States_ID").html(s);
+                    }
+                });
+            });
+        });
+
+    </script>
+    <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDWTHLiTeCJ8YVPGdMkZEPXzo_6FeuRwHE&sensor=true"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/Site.js")"></script>
+}
+ 

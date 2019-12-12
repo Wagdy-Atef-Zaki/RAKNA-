@@ -1,0 +1,72 @@
+﻿@model IEnumerable<Rkna_Project.Models.Area_Table>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>All Garages</h2>
+
+<p>
+    @Html.ActionLink("New Garage", "Create", null, new { @class = "btn btn-primary btn-rounded btn-large" })
+</p>
+<table class="table ">
+    <tr>
+        <th class="col-form-label-col-md-3"> 
+            @Html.Label("Name") 
+        </th>
+        <th class="col-form-label-col-md-2">
+            @Html.Label("Description")
+        </th>
+        <th class="col-form-label-col-md-1">
+            @Html.Label("Hour Rate")
+        </th>
+        <th class="col-form-label-col-md-2">
+            @Html.Label("Start Time")
+        </th>
+        <th class="col-form-label-col-md-1">
+            @Html.Label("End Time")
+        </th>
+        <th class="col-form-label-col-md-1">
+            @Html.Label("Manager")
+        </th>
+        <th class="col-form-label-col-md-2">
+            @Html.Label("City")
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td class="col-form-label-col-md-3">
+                @Html.DisplayFor(modelItem => item.Area_Name)
+            </td>
+            <td class="col-form-label-col-md-2">
+                @Html.DisplayFor(modelItem => item.Area_Desc)
+            </td>
+            <td class="col-form-label-col-md-1">
+                @Html.DisplayFor(modelItem => item.Area_Hour_Rate)
+            </td>
+            <td class="col-form-label-col-md-1">
+                @Html.DisplayFor(modelItem => item.Area_Start_Time)
+            </td>
+            <td class="col-form-label-col-md-1">
+                @Html.DisplayFor(modelItem => item.Area_End_Time)
+            </td>
+            <td class="col-form-label-col-md-1">
+                @Html.DisplayFor(modelItem => item.AspNetUser.Email)
+            </td>
+            <td class="col-form-label-col-md-1">
+                @Html.DisplayFor(modelItem => item.States_Table.States_Name)
+            </td>
+            <td class="col-form-label-col-md-2">
+               
+                @Html.ActionLink("Details", "Details", new { id = item.Area_ID },  new { @class = "btn btn-primary btn-rounded btn-large" }) 
+               
+            </td>
+        </tr>
+    }
+</table>  
+
+

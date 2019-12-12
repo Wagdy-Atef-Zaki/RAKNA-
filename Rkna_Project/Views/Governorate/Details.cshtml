@@ -1,0 +1,72 @@
+﻿@model Rkna_Project.Models.Governorate_Table
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+<br />
+
+<h2> @Html.DisplayFor(model => model.Gov_Name) Governorate Details</h2>
+
+<div>
+    
+    <table class="table">
+        <tr>
+            <td>
+                @Html.Label("Governorate Name")
+            </td>
+            <td>
+                @Html.Label("Governorate Description ")
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(model => model.Gov_Name)
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.Gov_Desc)
+            </td>
+        </tr>
+
+    </table>
+    <dl class="dl-horizontal"></dl>
+</div>
+<div class="form-group">
+    <div id="map_canvas" style="height: 400px;"></div>
+</div>
+<div class="form-group">
+    @Html.Label("Address", htmlAttributes: new { id = "address", @class = "control-label col-md-6" })
+    <div class="col-md-10">
+        @Html.Editor(" ", new { htmlAttributes = new { id = "address", @class = "form-control" } })
+    </div>
+</div>
+<div class="form-group">
+    @Html.LabelFor(model => model.Gov_X_Point, "Longitude", htmlAttributes: new { @class = "control-label col-md-6" })
+    <div class="col-md-10">
+        @Html.EditorFor(model => model.Gov_X_Point, new { htmlAttributes = new { id = "Longitude", @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Gov_X_Point, "", new { @class = "text-danger" })
+    </div>
+</div>
+<div class="form-group">
+    @Html.LabelFor(model => model.Gov_Y_Point, "Latitude", htmlAttributes: new { @class = "control-label col-md-6" })
+    <div class="col-md-10">
+        @Html.EditorFor(model => model.Gov_Y_Point, new { htmlAttributes = new { id = "Latitude", @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Gov_Y_Point, "", new { @class = "text-danger" })
+    </div>
+</div>
+<br />
+<br />
+<p>
+    @Html.ActionLink("Update", "Edit", new { id = Model.Gov_ID }, new { @class = "btn btn-primary btn-rounded btn-large" })
+    @Html.ActionLink("Delete", "Delete", new { id = Model.Gov_ID }, new { @class = "btn btn-danger btn-rounded btn-large" })
+    
+    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-primary btn-rounded btn-large" })
+</p>
+@section Scripts {
+
+    <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDWTHLiTeCJ8YVPGdMkZEPXzo_6FeuRwHE&sensor=true"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/Site.js")"></script>
+}

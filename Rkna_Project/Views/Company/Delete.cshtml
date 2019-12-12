@@ -1,0 +1,74 @@
+﻿@model Rkna_Project.Models.Company_Table
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<br />
+<h2>Are you sure you want to delete  @Html.DisplayFor(model => model.Company_Name)?</h2>
+
+<div>
+    
+    <hr />
+    <table class="table"> 
+        <tr> 
+        <td>
+            @Html.Label("Company Name")
+        </td>
+
+        <td>
+            @Html.DisplayFor(model => model.Company_Name)
+        </td>
+
+        <td>
+            @Html.Label("Company Description")
+        </td>
+
+        <td>
+            @Html.DisplayFor(model => model.Company_Desc)
+        </td>
+
+        <td>
+            @Html.Label("Company Pnone 1")
+        </td>
+
+        <td>
+            @Html.DisplayFor(model => model.Com_Pnone1)
+        </td>
+
+        <td>
+            @Html.Label("Company Pnone 2")
+        </td>
+
+        <td>
+            @Html.DisplayFor(model => model.Com_Pnone2)
+        </td>
+
+        <td>
+            @Html.Label("Company Pnone 3")
+        </td>
+
+        <td>
+            @Html.DisplayFor(model => model.Com_Pnone3)
+        </td>
+
+        <td>
+            @Html.Label("Company Manger")
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.Comp_Manger)
+        </td>
+        </tr>
+    </table>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-outline-danger btn-rounded" /> 
+            @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-primary btn-rounded btn-large" })
+        </div>
+    }
+</div>

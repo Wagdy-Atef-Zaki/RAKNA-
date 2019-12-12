@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Rkna_Project.Models.AspNetUserRole>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Change User Permision</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.Label("User Name")
+        </th>
+        <th>
+            @Html.Label("Email")
+        </th>
+        <th>
+            @Html.Label("User Rule ")
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.AspNetUser.UserName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AspNetUser.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RoleId)
+        </td>
+        <td>
+            
+            @Html.ActionLink("Update", "Edit", new { id = item.UserId }, new { @class = "btn btn-primary btn-rounded btn-large" })
+            @Html.ActionLink("Delete", "Delete", new { id = item.UserId }, new { @class = "btn btn-danger btn-rounded btn-large" })
+        </td>
+    </tr>
+    }
+
+</table>
+ 

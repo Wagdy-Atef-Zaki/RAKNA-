@@ -1,0 +1,104 @@
+﻿@model Rkna_Project.Models.Area_Table
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+<h2>Are you sure you want to delete @Html.DisplayFor(model => model.Area_Name) Garage?</h2>
+
+
+<div>
+    
+    <table class="table  ">
+        <tr>
+            <td class="control-label ">
+                @Html.Label("Garage")
+            </td>
+            <td class="control-label ">
+                @Html.Label("Description")
+            </td>
+            <td class="control-label ">
+                @Html.Label("Hour Rate")
+            </td>
+            <td class="control-label ">
+                @Html.Label("Start Time")
+            </td>
+            <td class="control-label ">
+                @Html.Label("End Time")
+            </td>
+            <td class="control-label ">
+                @Html.Label("Manager")
+            </td>
+            <td class="control-label ">
+                @Html.Label("City")
+            </td>
+        </tr>
+
+        <tr>
+            <td class="control-label ">
+                @Html.DisplayFor(model => model.Area_Name)
+            </td>
+            <td class="control-label ">
+                @Html.DisplayFor(model => model.Area_Desc)
+            </td>
+            <td class="control-label ">
+                @Html.DisplayFor(model => model.Area_Hour_Rate)
+            </td>
+
+            <td class="control-label ">
+                @Html.DisplayFor(model => model.Area_Start_Time)
+            </td>
+            <td class="control-label ">
+                @Html.DisplayFor(model => model.Area_End_Time)
+            </td>
+
+            <td class="control-label ">
+                @Html.DisplayFor(model => model.AspNetUser.Email)
+            </td>
+            <td class="control-label ">
+                @Html.DisplayFor(model => model.States_Table.States_Name)
+            </td>
+
+        </tr>
+    </table>
+    <div class="form-group">
+        <div id="map_canvas" style="height: 400px;"></div>
+    </div>
+    <div class="form-group">
+        @Html.Label("Address", htmlAttributes: new { id = "address", @class = "control-label col-md-6" })
+        <div class="col-md-10">
+            @Html.Editor(" ", new { htmlAttributes = new { id = "address", @class = "form-control" } })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Area_X_Point, "Longitude", htmlAttributes: new { @class = "control-label col-md-6" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Area_X_Point, new { htmlAttributes = new { id = "Longitude", @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Area_X_Point, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Area_Y_Point, "Latitude", htmlAttributes: new { @class = "control-label col-md-6" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Area_Y_Point, new { htmlAttributes = new { id = "Latitude", @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Area_Y_Point, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <br />
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-outline-danger btn-rounded" /> 
+            @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-primary btn-rounded btn-large" })
+        </div>
+    }
+</div>
+@section Scripts {
+
+    <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDWTHLiTeCJ8YVPGdMkZEPXzo_6FeuRwHE&sensor=true"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/Site.js")"></script>
+} 

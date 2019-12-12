@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Rkna_Project.Models.Slut_Table>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>All Slots </h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary btn-rounded btn-large" })
+</p>
+<table class="table ">
+    <tr>
+        <th>
+            @Html.Label("Name")
+        </th>
+        <th>
+            @Html.Label("Level")
+        </th>
+        <th>
+            @Html.Label("State")
+        </th> 
+        <th> 
+            @Html.Label("Area Name")
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Slut_Level)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Slut_State)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Area_Table.Area_Name)
+        </td>
+        <td>
+           
+            @Html.ActionLink("Details", "Details", new { id=item.Slut_ID }, new { @class = "btn btn-primary btn-rounded btn-large" }) 
+           
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,71 @@
+﻿@model Rkna_Project.Models.Customer_Slut_Table
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+<br />
+<h2> @Html.DisplayFor(model => model.Cus_Slut_Date) Details of booking Slot</h2>
+
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayName("Slot Date")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cus_Slut_Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Start Time")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cus_Slut_S_Time)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("End Time")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cus_Slut_E_Time)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Cheeck Code")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cheeck_Code)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Email")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AspNetUser.Email)
+        </dd>
+
+
+        <dt>
+            @Html.DisplayName("Slot Name")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Slut_Table.Name)
+        </dd>
+
+    </dl>
+</div>
+<br />
+<div>
+    @Html.ActionLink("Update", "Edit", new { id = Model.Customer_Slut_ID }, new { @class = "btn btn-primary btn-rounded btn-large" })
+    @Html.ActionLink("Delete", "Delete", new { id = Model.Customer_Slut_ID }, new { @class = "btn btn-danger btn-rounded btn-large" })
+    @Html.ActionLink("Back to List", "Index",null, new { @class = "btn btn-primary btn-rounded btn-large" })
+</div>
